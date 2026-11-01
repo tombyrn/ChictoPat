@@ -7,25 +7,53 @@
 
 import SwiftUI
 import PencilKit
+import UIKit
+
+// CaseIterable protocol allows you can access all the enums cases
+// Identifiable protocol provides a stable notion of identity to a class or value type
+enum DrawingTool: String, CaseIterable, Identifiable {
+    case pen = "Pen"
+    case eraser = "Eraser"
+
+    var id: String { rawValue }
+}
+
+// ObservableObject
+final class DrawingCanvasController: ObservableObject {
+    weak var canvasView: PKCanvasView?
+
+    func undo() {
+        canvasView?.undoManager?.undo()
+    }
+
+    func redo() {
+        canvasView?.undoManager?.redo()
+    }
+
+    func clear() {
+        canvasView?.drawing = PKDrawing()
+    }
+}
 
 struct DrawingCanvasView: UIViewRepresentable {
     @Binding var drawing: PKDrawing
+
+    let selectedTool: DrawingTool
+    let selectedColor: Color
+    let strokeWidth: CGFloat
+    let controller: DrawingCanvasController
 
     func makeUIView(context: Context) -> PKCanvasView {
         let canvas = PKCanvasView()
 
         canvas.backgroundColor = .white
         canvas.isOpaque = true
-
         canvas.drawingPolicy = .anyInput
-
-        canvas.tool = PKInkingTool(
-            .pen,
-            color: .black,
-            width: 5
-        )
-
         canvas.delegate = context.coordinator
+
+        controller.canvasView = canvas
+
+        updateTool(for: canvas)
 
         return canvas
     }
@@ -36,6 +64,22 @@ struct DrawingCanvasView: UIViewRepresentable {
     ) {
         if canvas.drawing != drawing {
             canvas.drawing = drawing
+        }
+
+        updateTool(for: canvas)
+    }
+
+    private func updateTool(for canvas: PKCanvasView) {
+        switch selectedTool {
+        case .pen:
+            canvas.tool = PKInkingTool(
+                .pen,
+                color: UIColor(selectedColor),
+                width: strokeWidth
+            )
+
+        case .eraser:
+            canvas.tool = PKEraserTool(.vector)
         }
     }
 

@@ -11,9 +11,12 @@ struct ChatView: View {
     @State private var roomBrowser: ChatRoomClient
     @State private var draft = ""
     @State private var showingDrawingComposer = false
+    
+    private var hostServer: ChatRoomServer? = nil
 
-    init(roomBrowser: ChatRoomClient) {
+    init(roomBrowser: ChatRoomClient, server: ChatRoomServer? = nil) {
         _roomBrowser = State(initialValue: roomBrowser)
+        hostServer = server
     }
 
     var body: some View {
@@ -21,7 +24,7 @@ struct ChatView: View {
             ScrollViewReader { proxy in
                 ScrollView {
                     LazyVStack(spacing: 12) {
-                        
+                        // chat messages
                         ForEach(roomBrowser.messages) { message in
                             HStack {
                                 if message.senderID == roomBrowser.clientID {
@@ -76,6 +79,9 @@ struct ChatView: View {
                 ToolbarItem(placement: .topBarLeading) {
                     Button("Leave") {
                         roomBrowser.disconnect()
+                        if roomBrowser.isHost {
+                            hostServer?.destroyRoom()
+                        }
                     }
                 }
             }
@@ -103,12 +109,13 @@ struct ChatView: View {
             }
             .padding()
         }
+        .navigationBarBackButtonHidden(true)
         .navigationTitle("PictoChat")
         .navigationBarTitleDisplayMode(.inline)
         .sheet(isPresented: $showingDrawingComposer) {
-            DrawingComposerView { data in
-                roomBrowser.sendDrawing(data)
-            }
+            DrawingComposerView(onSend: { drawingData in
+                roomBrowser.sendDrawing(drawingData)
+            })
         }
     }
 

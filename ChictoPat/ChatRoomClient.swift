@@ -14,6 +14,7 @@ class ChatRoomClient {
     
     var rooms: [NWBrowser.Result] = []
     var isConnected = false
+    var isHost = false
     
     var messages: [ChatMessage] = []
     var senderName = ""
