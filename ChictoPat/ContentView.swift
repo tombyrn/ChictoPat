@@ -25,7 +25,7 @@ struct ContentView: View {
                 drawing = PKDrawing()
             }
             .padding()
-            .cornerRadius(8)
+            .cornerRadius(20)
         }
         .padding()
     }

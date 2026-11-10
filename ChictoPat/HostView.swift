@@ -19,20 +19,19 @@ struct HostView: View {
         VStack(spacing: 20) {
             // host has started server and is now entering the chat
             if chatClient.isConnected {
-                
                 ChatView(roomBrowser: chatClient, server: chatRoom)
             }
             // host creates the server
             else {
-                Text("Host a PictoChat Room")
+                Text("Host a Room")
                     .font(.title2.bold())
 
-                TextField("Your room name", text: $serverName)
+                TextField("Room name", text: $serverName)
                     .textFieldStyle(.roundedBorder)
                     .textInputAutocapitalization(.words)
                     .autocorrectionDisabled()
                 
-                TextField("Your display name", text: $displayName)
+                TextField("Display name", text: $displayName)
                     .textFieldStyle(.roundedBorder)
                     .textInputAutocapitalization(.words)
                     .autocorrectionDisabled()
@@ -61,6 +60,7 @@ struct HostView: View {
                     chatRoom.createRoom()
                 }
                 .buttonStyle(.borderedProminent)
+                .cornerRadius(20)
                 .disabled(
                     serverName.trimmingCharacters(
                         in: .whitespacesAndNewlines
@@ -69,5 +69,6 @@ struct HostView: View {
             }
         }
         .padding()
+        .navigationTitle("ChictoPat")
     }
 }

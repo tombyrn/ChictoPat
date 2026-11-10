@@ -83,6 +83,8 @@ struct ChatView: View {
                             hostServer?.destroyRoom()
                         }
                     }
+                    .buttonStyle(.borderedProminent)
+                    .cornerRadius(20)
                 }
             }
 
@@ -110,7 +112,7 @@ struct ChatView: View {
             .padding()
         }
         .navigationBarBackButtonHidden(true)
-        .navigationTitle("PictoChat")
+        .navigationTitle("ChictoPat")
         .navigationBarTitleDisplayMode(.inline)
         .sheet(isPresented: $showingDrawingComposer) {
             DrawingComposerView(onSend: { drawingData in

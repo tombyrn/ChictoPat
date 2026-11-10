@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		004001913099215000281C37 /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004001903099215000281C37 /* AppTheme.swift */; };
 		00570D5A2F00F1F400EEC732 /* ChictoPatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00570D592F00F1F400EEC732 /* ChictoPatApp.swift */; };
 		00570D5C2F00F1F400EEC732 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00570D5B2F00F1F400EEC732 /* ContentView.swift */; };
 		00570D5E2F00F1F700EEC732 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00570D5D2F00F1F700EEC732 /* Assets.xcassets */; };
@@ -47,6 +48,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		004001903099215000281C37 /* AppTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTheme.swift; sourceTree = "<group>"; };
 		00570D562F00F1F400EEC732 /* ChictoPat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChictoPat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00570D592F00F1F400EEC732 /* ChictoPatApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChictoPatApp.swift; sourceTree = "<group>"; };
 		00570D5B2F00F1F400EEC732 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 				00BF0F54308D702D0047C6E9 /* DrawingCanvasView.swift */,
 				00BF0F56308D70970047C6E9 /* DrawingComposerView.swift */,
 				00BF0F58308DA5EA0047C6E9 /* DrawingBubbleView.swift */,
+				004001903099215000281C37 /* AppTheme.swift */,
 			);
 			path = ChictoPat;
 			sourceTree = "<group>";
@@ -319,6 +322,7 @@
 				00BF0F55308D702D0047C6E9 /* DrawingCanvasView.swift in Sources */,
 				0099525E306F51F40070A1C5 /* HostView.swift in Sources */,
 				009952663074959A0070A1C5 /* NetworkMessage.swift in Sources */,
+				004001913099215000281C37 /* AppTheme.swift in Sources */,
 				00570D842F00F21500EEC732 /* CanvasView.swift in Sources */,
 				00BF0F59308DA5EA0047C6E9 /* DrawingBubbleView.swift in Sources */,
 			);

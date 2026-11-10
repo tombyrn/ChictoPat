@@ -130,6 +130,8 @@ struct DrawingComposerView: View {
                         onSend(drawing.dataRepresentation())
                         dismiss()
                     }
+                    .buttonStyle(.borderedProminent)
+                    .cornerRadius(20)
                     .disabled(drawing.strokes.isEmpty)
                     .fontWeight(.semibold)
                 }

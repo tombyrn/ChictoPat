@@ -24,7 +24,7 @@ struct ClientView: View {
                     roomListView
                 }
             }
-            .navigationTitle("PictoChat")
+            .navigationTitle("ChictoPat")
         }
         .onAppear {
             roomBrowser.startBrowsing()
@@ -39,10 +39,10 @@ struct ClientView: View {
             Image(systemName: "person.crop.circle")
                 .font(.system(size: 64))
 
-            Text("What's your name?")
+            Text("Enter Display Name")
                 .font(.title2.bold())
 
-            TextField("Display name", text: $displayName)
+            TextField("Display Name", text: $displayName)
                 .textFieldStyle(.roundedBorder)
                 .textInputAutocapitalization(.words)
                 .autocorrectionDisabled()
@@ -60,6 +60,7 @@ struct ClientView: View {
                 hasEnteredName = true
             }
             .buttonStyle(.borderedProminent)
+            .cornerRadius(20)
             .disabled(displayName.trimmingCharacters(
                 in: .whitespacesAndNewlines
             ).isEmpty)
@@ -67,6 +68,7 @@ struct ClientView: View {
         .padding()
     }
     
+    // returns name of the chat room as provided by the host's NWEndpoint 
     private func name(for endpoint: NWEndpoint) -> String {
         if case let .service(name, _, _, _) = endpoint {
             return name
