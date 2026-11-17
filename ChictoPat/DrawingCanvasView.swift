@@ -2,15 +2,13 @@
 //  DrawingCanvasView.swift
 //  ChictoPat
 //
-//  Created by Aaaaaaa a on 10/24/26.
+//  Created by Thomas Byrnes on 10/24/26.
 //
 
 import SwiftUI
 import PencilKit
 import UIKit
 
-// CaseIterable protocol allows you can access all the enums cases
-// Identifiable protocol provides a stable notion of identity to a class or value type
 enum DrawingTool: String, CaseIterable, Identifiable {
     case pen = "Pen"
     case eraser = "Eraser"
@@ -18,7 +16,6 @@ enum DrawingTool: String, CaseIterable, Identifiable {
     var id: String { rawValue }
 }
 
-// ObservableObject
 final class DrawingCanvasController: ObservableObject {
     weak var canvasView: PKCanvasView?
 

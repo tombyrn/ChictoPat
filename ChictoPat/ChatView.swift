@@ -2,7 +2,7 @@
 //  ChatView.swift
 //  ChictoPat
 //
-//  Created by Aaaaaaa a on 10/15/26.
+//  Created by Thomas Byrnes on 10/15/26.
 //
 
 import SwiftUI
@@ -77,7 +77,7 @@ struct ChatView: View {
                 }
             }.toolbar {
                 ToolbarItem(placement: .topBarLeading) {
-                    Button("Leave") {
+                    Button(roomBrowser.isHost ? "Destroy" : "Leave") {
                         roomBrowser.disconnect()
                         if roomBrowser.isHost {
                             hostServer?.destroyRoom()

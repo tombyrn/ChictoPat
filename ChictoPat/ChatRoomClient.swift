@@ -2,7 +2,7 @@
 //  ChatRoomClient.swift
 //  ChictoPat
 //
-//  Created by Aaaaaaa a on 10/4/26.
+//  Created by Thomas Byrnes on 10/4/26.
 //
 
 import Foundation
@@ -23,7 +23,7 @@ class ChatRoomClient {
     private var connection: NWConnection?
     private let maximumPacketSize = 1_048_576 // 1 MiB
     
-    
+    // begin searching for new rooms
     func startBrowsing() {
         browser = NWBrowser(
             for: .bonjour(
@@ -37,6 +37,7 @@ class ChatRoomClient {
             print("Browser state: \(state)")
         }
         
+        // update chat room
         browser?.browseResultsChangedHandler = { [weak self] results, changes in
             self?.rooms = Array(results)
             
@@ -50,11 +51,13 @@ class ChatRoomClient {
         browser?.start(queue: .main)
     }
     
+    // destroy browser
     func stopBrowsing() {
         browser?.cancel()
         browser = nil
     }
     
+    // connect to server
     func connect(to room: NWBrowser.Result) {
         connect(to: room.endpoint)
     }
@@ -81,30 +84,30 @@ class ChatRoomClient {
             print("Connection state \(state)")
             
             switch state {
-            case .ready:
-                DispatchQueue.main.async {
-                    self?.isConnected = true
-                }
-
-                let joinPacket = NetworkPacket(
-                    type: .join,
-                    participantID: self?.clientID,
-                    participantName: self?.senderName,
-                    eventTimestamp: Date()
-                )
-
-                self?.send(joinPacket)
-                self?.receiveLength(on: connection)
-            case .failed, .cancelled:
-                DispatchQueue.main.async {
-                    if self?.connection === connection {
-                        self?.connection = nil
-                        self?.isConnected = false
+                case .ready:
+                    DispatchQueue.main.async {
+                        self?.isConnected = true
                     }
-                }
-                print("Connection failed/cancelled")
-            default:
-                break
+
+                    let joinPacket = NetworkPacket(
+                        type: .join,
+                        participantID: self?.clientID,
+                        participantName: self?.senderName,
+                        eventTimestamp: Date()
+                    )
+
+                    self?.send(joinPacket)
+                    self?.receiveLength(on: connection)
+                case .failed, .cancelled:
+                    DispatchQueue.main.async {
+                        if self?.connection === connection {
+                            self?.connection = nil
+                            self?.isConnected = false
+                        }
+                    }
+                    print("Connection failed/cancelled")
+                default:
+                    break
             }
             
         }
@@ -112,6 +115,7 @@ class ChatRoomClient {
         
     }
 
+    // leave chat room by sending leave packet to the server
     func disconnect() {
         guard let connection = connection else {
             isConnected = false
@@ -174,10 +178,12 @@ class ChatRoomClient {
         }
     }
     
+    // get message from server
     private func receive(on connection: NWConnection) {
         receiveLength(on: connection)
     }
    
+    // decode message length from first 4 bytes of messaage
     private func receiveLength(on connection: NWConnection) {
         receiveExactly(on: connection, count: 4) {
             [weak self] data in
@@ -363,6 +369,7 @@ class ChatRoomClient {
         send(packet)
     }
    
+    // receives the exact amount of bytes from given connection
     private func receiveExactly(
         on connection: NWConnection,
         count: Int,
@@ -404,20 +411,20 @@ class ChatRoomClient {
                 buffer.append(data)
             }
 
-            // We have the complete requested byte sequence.
+            // we have the complete requested byte sequence
             if buffer.count == count {
                 completion(buffer)
                 return
             }
 
-            // The stream ended or stopped making progress too soon.
+            // the stream ended or stopped making progress too soon
             if isComplete || buffer.count == accumulated.count {
                 connection.cancel()
                 completion(nil)
                 return
             }
 
-            // Continue reading the bytes still missing.
+            // continue reading the bytes still missing
             self.receiveExactly(
                 on: connection,
                 count: count,

@@ -2,7 +2,7 @@
 //  DrawingComposerView.swift
 //  ChictoPat
 //
-//  Created by Aaaaaaa a on 10/24/26.
+//  Created by Thomas Byrnes on 10/24/26.
 //
 
 import SwiftUI
@@ -94,7 +94,6 @@ struct DrawingComposerView: View {
                 }
                 .buttonStyle(.bordered)
 
-                // Canvas
                 DrawingCanvasView(
                     drawing: $drawing,
                     selectedTool: selectedTool,
@@ -102,6 +101,7 @@ struct DrawingComposerView: View {
                     strokeWidth: strokeWidth,
                     controller: canvasController
                 )
+                
                 .background(Color.white)
                 .clipShape(
                     RoundedRectangle(cornerRadius: 12)

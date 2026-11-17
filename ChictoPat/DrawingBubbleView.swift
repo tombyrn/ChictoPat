@@ -2,7 +2,7 @@
 //  DrawingBubbleView.swift
 //  ChictoPat
 //
-//  Created by Aaaaaaa a on 10/24/26.
+//  Created by Thomas Byrnes on 10/24/26.
 //
 
 import Foundation
@@ -27,7 +27,7 @@ struct DrawingBubbleView: View {
 
             let bounds = drawing.bounds
 
-            // Add padding around the drawing.
+            // padding around the drawing
             let paddedBounds = bounds.insetBy(
                 dx: -20,
                 dy: -20

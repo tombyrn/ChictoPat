@@ -7,15 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		004001913099215000281C37 /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004001903099215000281C37 /* AppTheme.swift */; };
 		00570D5A2F00F1F400EEC732 /* ChictoPatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00570D592F00F1F400EEC732 /* ChictoPatApp.swift */; };
-		00570D5C2F00F1F400EEC732 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00570D5B2F00F1F400EEC732 /* ContentView.swift */; };
 		00570D5E2F00F1F700EEC732 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00570D5D2F00F1F700EEC732 /* Assets.xcassets */; };
 		00570D612F00F1F700EEC732 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00570D602F00F1F700EEC732 /* Preview Assets.xcassets */; };
 		00570D6B2F00F1F800EEC732 /* ChictoPatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00570D6A2F00F1F800EEC732 /* ChictoPatTests.swift */; };
 		00570D752F00F1F800EEC732 /* ChictoPatUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00570D742F00F1F800EEC732 /* ChictoPatUITests.swift */; };
 		00570D772F00F1F800EEC732 /* ChictoPatUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00570D762F00F1F800EEC732 /* ChictoPatUITestsLaunchTests.swift */; };
-		00570D842F00F21500EEC732 /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00570D832F00F21500EEC732 /* CanvasView.swift */; };
 		00995258306B1E570070A1C5 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00995257306B1E570070A1C5 /* MenuView.swift */; };
 		0099525A306F4B9C0070A1C5 /* ChatRoomServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00995259306F4B9C0070A1C5 /* ChatRoomServer.swift */; };
 		0099525E306F51F40070A1C5 /* HostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0099525D306F51F40070A1C5 /* HostView.swift */; };
@@ -48,10 +45,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		004001903099215000281C37 /* AppTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTheme.swift; sourceTree = "<group>"; };
 		00570D562F00F1F400EEC732 /* ChictoPat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChictoPat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00570D592F00F1F400EEC732 /* ChictoPatApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChictoPatApp.swift; sourceTree = "<group>"; };
-		00570D5B2F00F1F400EEC732 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		00570D5D2F00F1F700EEC732 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		00570D602F00F1F700EEC732 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		00570D662F00F1F800EEC732 /* ChictoPatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChictoPatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -59,7 +54,6 @@
 		00570D702F00F1F800EEC732 /* ChictoPatUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChictoPatUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00570D742F00F1F800EEC732 /* ChictoPatUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChictoPatUITests.swift; sourceTree = "<group>"; };
 		00570D762F00F1F800EEC732 /* ChictoPatUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChictoPatUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		00570D832F00F21500EEC732 /* CanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasView.swift; sourceTree = "<group>"; };
 		00995257306B1E570070A1C5 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		00995259306F4B9C0070A1C5 /* ChatRoomServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomServer.swift; sourceTree = "<group>"; };
 		0099525C306F4F8A0070A1C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -126,10 +120,8 @@
 			children = (
 				0099525C306F4F8A0070A1C5 /* Info.plist */,
 				00570D592F00F1F400EEC732 /* ChictoPatApp.swift */,
-				00570D5B2F00F1F400EEC732 /* ContentView.swift */,
 				00570D5D2F00F1F700EEC732 /* Assets.xcassets */,
 				00570D5F2F00F1F700EEC732 /* Preview Content */,
-				00570D832F00F21500EEC732 /* CanvasView.swift */,
 				00995257306B1E570070A1C5 /* MenuView.swift */,
 				00995259306F4B9C0070A1C5 /* ChatRoomServer.swift */,
 				0099525D306F51F40070A1C5 /* HostView.swift */,
@@ -142,7 +134,6 @@
 				00BF0F54308D702D0047C6E9 /* DrawingCanvasView.swift */,
 				00BF0F56308D70970047C6E9 /* DrawingComposerView.swift */,
 				00BF0F58308DA5EA0047C6E9 /* DrawingBubbleView.swift */,
-				004001903099215000281C37 /* AppTheme.swift */,
 			);
 			path = ChictoPat;
 			sourceTree = "<group>";
@@ -310,7 +301,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				00995260306F51FD0070A1C5 /* ClientView.swift in Sources */,
-				00570D5C2F00F1F400EEC732 /* ContentView.swift in Sources */,
 				00995258306B1E570070A1C5 /* MenuView.swift in Sources */,
 				009952643074917E0070A1C5 /* ChatMessage.swift in Sources */,
 				00BA45753081CEFA003C7AE3 /* NetworkPacket.swift in Sources */,
@@ -322,8 +312,6 @@
 				00BF0F55308D702D0047C6E9 /* DrawingCanvasView.swift in Sources */,
 				0099525E306F51F40070A1C5 /* HostView.swift in Sources */,
 				009952663074959A0070A1C5 /* NetworkMessage.swift in Sources */,
-				004001913099215000281C37 /* AppTheme.swift in Sources */,
-				00570D842F00F21500EEC732 /* CanvasView.swift in Sources */,
 				00BF0F59308DA5EA0047C6E9 /* DrawingBubbleView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

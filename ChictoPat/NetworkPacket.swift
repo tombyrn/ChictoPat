@@ -2,7 +2,7 @@
 //  NetworkPacket.swift
 //  ChictoPat
 //
-//  Created by Aaaaaaa a on 10/15/26.
+//  Created by Thomas Byrnes on 10/15/26.
 //
 
 import Foundation

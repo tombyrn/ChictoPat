@@ -2,7 +2,7 @@
 //  HostView.swift
 //  ChictoPat
 //
-//  Created by Aaaaaaa a on 10/1/26.
+//  Created by Thomas Byrnes on 10/1/26.
 //
 
 import SwiftUI
@@ -14,7 +14,7 @@ struct HostView: View {
 
     @State private var serverName = ""
     @State private var displayName = ""
-
+    
     var body: some View {
         VStack(spacing: 20) {
             // host has started server and is now entering the chat

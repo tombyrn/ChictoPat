@@ -2,7 +2,7 @@
 //  ChatRoomServer.swift
 //  ChictoPat
 //
-//  Created by Aaaaaaa a on 10/1/26.
+//  Created by Thomas Byrnes on 10/1/26.
 //
 
 import Foundation
@@ -30,6 +30,7 @@ class ChatRoomServer {
     // dictionary that maps each connection to the participant who joined through it
     private var participants: [ObjectIdentifier: Participant] = [:]
     
+    // creates chatroom by creating network listener to accept clients
     func createRoom() {
         do {
             listener = try NWListener(using: .tcp)
@@ -43,10 +44,11 @@ class ChatRoomServer {
             type: "_chictopat._tcp"
         )
         
+        // receives updates whenever the listener changes its network state (ie ready/waiting/failed/cancelled)
         listener?.stateUpdateHandler = { [weak self] state in
             print("Listener state: \(state)")
             
-            guard case .ready = state else {return}
+            guard case .ready = state else { return }
             
             guard let port = self?.listener?.port else {
                 print("Listender is ready, but no port available")
@@ -95,18 +97,19 @@ class ChatRoomServer {
         isHosting = true
     }
 
+    // removes client from room
     private func removeConnection(_ connection: NWConnection) {
         let key = ObjectIdentifier(connection)
 
-        // Remove the participant, if they successfully joined.
+        // remove the participant, if they successfully joined.
         let participant = participants.removeValue(forKey: key)
 
-        // Remove the network connection.
+        // remove the network connection.
         connections.removeAll {
             $0 === connection
         }
 
-        // Announce the departure only once.
+        // announce the departure only once.
         if let participant = participant {
             let packet = NetworkPacket(
                 type: .leave,
@@ -130,13 +133,13 @@ class ChatRoomServer {
 
         let packet = NetworkPacket(type: .roomDestroyed)
 
-        // Notify clients before cancelling their connections.
+        // notify clients before cancelling their connections.
         broadcast(packet) { [weak self] in
             guard let self = self else { return }
 
             let activeConnections = self.connections
 
-            // Clear participants first so cancellation doesn't announce
+            // clear participants first so cancellation doesn't announce
             // everyone as individually leaving the room.
             self.participants.removeAll()
             self.connections.removeAll()
@@ -160,7 +163,6 @@ class ChatRoomServer {
     private func receive(on connection: NWConnection) {
         receiveLength(on: connection)
     }
-    
    
     // decode message length from first 4 bytes of messaage
     private func receiveLength(on connection: NWConnection) {
@@ -220,7 +222,7 @@ class ChatRoomServer {
                 return
             }
             
-
+            // when the whole message has been read decode it and broadcast it to room
             do {
                 let packet = try JSONDecoder().decode(
                     NetworkPacket.self,
@@ -298,6 +300,7 @@ class ChatRoomServer {
         }
     }
     
+    // send a packet to specified connection
     private func send(
         _ packet: NetworkPacket,
         to connection: NWConnection
@@ -374,7 +377,7 @@ class ChatRoomServer {
         }
     }
     
-    
+    // receives the exact amount of bytes from given connection
     private func receiveExactly(
         on connection: NWConnection,
         count: Int,
